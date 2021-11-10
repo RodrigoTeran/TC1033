@@ -98,6 +98,6 @@ void Employee::AskPromotion() {
 };
 
 void Employee::PresentYourself(string projectName) {
-  cout << "Hola!, mi nombre es " << Name << " y soy " << Position << " en Meta!" << endl;
+  cout << "Hola!, mi nombre es " << Name << " y soy " << Position << endl;
   cout << "Y hoy voy a estar trabajando en el proyecto de " << projectName << endl << endl;
 };
