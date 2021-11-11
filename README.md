@@ -1,5 +1,7 @@
 # Company Employee System (CES)
 
+<img src="logo.png" alt="Company Employee System" width="200"/>
+
 ## ¿Qué es?
 CES, es un sistema para el control de empleados y proyectos para las empresas.
 
