@@ -33,6 +33,7 @@ class Employee {
       Position = position;
       HoursWorked = 0;
       WantsPromotion = false;
+      CurrentProject = Project();
     };
 
     // Getters

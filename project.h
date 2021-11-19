@@ -29,7 +29,7 @@ class Project {
     
     // Setters
     void setName(string name);
-    void setNecessaryHours(string position);
+    void setNecessaryHours(int hours);
 };
 
 // Getters
@@ -46,10 +46,8 @@ void Project::setName(string name) {
   Name = name;
 };
 
-void Project::setNecessaryHours(string position) {
-  if (position == "Product Manager") {
-    NecessaryHours += 5;
-  };
+void Project::setNecessaryHours(int hours) {
+  NecessaryHours = hours;
 };
 
 #endif

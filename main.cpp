@@ -26,7 +26,7 @@ void checkIfPromotion(Employee employee, Company company, Project project) {
     employee.setPosition("Product Manager");
     employee.addMoreSalary();
     
-    project.setNecessaryHours(employee.getPosition());
+    project.setNecessaryHours(project.getHours() + 5);
   };
 };
 
@@ -54,16 +54,10 @@ int main() {
   */
 
   /*
-    Se inicializan los proyectos
-  */
-  Project FrontendButton("Arreglar boton de pagina de Instagram", 14);
-  Project Analyst("Analisis de datos de WhatsApp", 20);
-
-  /*
     Crear Empleados
     Esto se puede llamar cada que alguien entra a la compañía
   */
-  // Rodrigo
+  // --------------------- Rodrigo ---------------------
   string languagesRodrigo[3] = {"TypeScript", "PHP", "Python"};
   Programmer RodrigoTeran(6000.0,
                           "Rodrigo Teran",
@@ -73,10 +67,14 @@ int main() {
                           languagesRodrigo,
                           "Visual Studio Code"
   );
-  RodrigoTeran.setCurrentProject(FrontendButton);
+  // Change own project
+  Project RodrigoProject = RodrigoTeran.getCurrentProject();
+  RodrigoProject.setName("Arreglar boton de pagina de Instagram");
+  RodrigoProject.setNecessaryHours(14);
+  RodrigoTeran.setCurrentProject(RodrigoProject);
   Meta.addEmployee();
 
-  // Paulina
+  // --------------------- Paulina ---------------------
   string languagesPaulina[3] = {"R", "C++", "Python"};
   Programmer PauCardoso(10000.0,
                         "Paulina Cardoso",
@@ -86,7 +84,10 @@ int main() {
                         languagesPaulina,
                         "VIM"
   );
-  PauCardoso.setCurrentProject(Analyst);
+  Project PauCardosoProject = RodrigoTeran.getCurrentProject();
+  PauCardosoProject.setName("Analisis de datos de WhatsApp");
+  PauCardosoProject.setNecessaryHours(20);
+  PauCardoso.setCurrentProject(PauCardosoProject);
   Meta.addEmployee();
 
   /*
@@ -101,16 +102,16 @@ int main() {
   */
   cout << "----------- Check diario de empleados -----------" << endl;
   MarkZuckerberg.presentYourself("Metaverso");
-  RodrigoTeran.presentYourself(FrontendButton.getName());
-  PauCardoso.presentYourself(Analyst.getName());
+  RodrigoTeran.presentYourself(RodrigoTeran.getCurrentProject().getName());
+  PauCardoso.presentYourself(PauCardoso.getCurrentProject().getName());
 
   /*
     Pedir promociones
   */
   cout << endl << "----------- Trabajo -----------" << endl;
   PauCardoso.askPromotion();
-  checkIfPromotion(RodrigoTeran, Meta, FrontendButton);
-  checkIfPromotion(PauCardoso, Meta, Analyst);
+  checkIfPromotion(RodrigoTeran, Meta, RodrigoTeran.getCurrentProject());
+  checkIfPromotion(PauCardoso, Meta, PauCardoso.getCurrentProject());
   
   /*
     No todos trabajan tan duro... pero solo los que lo hacen,
@@ -128,8 +129,8 @@ int main() {
   RodrigoTeran.code();
   RodrigoTeran.askPromotion();
 
-  checkIfPromotion(RodrigoTeran, Meta, FrontendButton);
-  checkIfPromotion(PauCardoso, Meta, Analyst);
+  checkIfPromotion(RodrigoTeran, Meta, RodrigoTeran.getCurrentProject());
+  checkIfPromotion(PauCardoso, Meta, PauCardoso.getCurrentProject());
 
   /*
     Cuando se terminan el día, se checa como van los empleados...
@@ -138,8 +139,8 @@ int main() {
     para que al siguiente día se inicialicen nuevos proyectos, etc...
   */
   cout << endl << "----------- Al final del dia -----------" << endl;
-  checkIfEndProject(PauCardoso, Analyst);
-  checkIfEndProject(RodrigoTeran, FrontendButton);
+  checkIfEndProject(RodrigoTeran, RodrigoTeran.getCurrentProject());
+  checkIfEndProject(PauCardoso, PauCardoso.getCurrentProject());
   
   return 0;
 };
