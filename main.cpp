@@ -1,5 +1,16 @@
+/*
+* Rodrigo Terán Hernández
+* A01704108
+* Materia: Pensamiento computacional orientado a objetos
+* Profesor: Benjamin Valdés Aguirre
+*/
+
 #include <iostream>
 #include "company.h"
+#include "programmer.h"
+#include "designer.h"
+#include "ceo.h"
+#include "project.h"
 
 using namespace std;
 
@@ -13,7 +24,7 @@ void checkIfPromotion(Employee employee, Company company, Project project) {
     company.isApplicantForPromotion(employee);
     
     employee.setPosition("Product Manager");
-    employee.setMoreSalary();
+    employee.addMoreSalary();
     
     project.setNecessaryHours(employee.getPosition());
   };
@@ -31,12 +42,13 @@ void checkIfEndProject(Employee employee, Project project) {
 };
 
 int main() {
+  // Ejemplo de uso:
   // Sistema de empleados de la compañía META (Facebook)
 
   // Crear Compañía
-  Employee MarkZuckerberg(1000000.0, "Mark Zuckerberg", 37, 17, "CEO");
+  CEO MarkZuckerberg(1000000.0, "Mark Zuckerberg", 37, 17, "CEO", "Meta");
   Company Meta(1200, "Meta", "Silicon Valley", MarkZuckerberg);
-
+  
   /*
     A partir de aquí todo el programa podría correr en un bucle cada día en un uso real
   */
@@ -51,11 +63,29 @@ int main() {
     Crear Empleados
     Esto se puede llamar cada que alguien entra a la compañía
   */
-  Employee RodrigoTeran(6000.0, "Rodrigo Teran", 19, 3, "Programmer");
+  // Rodrigo
+  string languagesRodrigo[3] = {"TypeScript", "PHP", "Python"};
+  Programmer RodrigoTeran(6000.0,
+                          "Rodrigo Teran",
+                          19,
+                          3,
+                          "Programmer",
+                          languagesRodrigo,
+                          "Visual Studio Code"
+  );
   RodrigoTeran.setCurrentProject(FrontendButton);
   Meta.addEmployee();
-  
-  Employee PauCardoso(10000.0, "Paulina Cardoso", 20, 4, "Programmer");
+
+  // Paulina
+  string languagesPaulina[3] = {"R", "C++", "Python"};
+  Programmer PauCardoso(10000.0,
+                        "Paulina Cardoso",
+                        20,
+                        4,
+                        "Programmer",
+                        languagesPaulina,
+                        "VIM"
+  );
   PauCardoso.setCurrentProject(Analyst);
   Meta.addEmployee();
 
@@ -70,14 +100,15 @@ int main() {
     En un uso real, esto podría ser un bucle que recorra todos los empleados...
   */
   cout << "----------- Check diario de empleados -----------" << endl;
-  RodrigoTeran.PresentYourself(FrontendButton.getName());
-  PauCardoso.PresentYourself(Analyst.getName());
+  MarkZuckerberg.presentYourself("Metaverso");
+  RodrigoTeran.presentYourself(FrontendButton.getName());
+  PauCardoso.presentYourself(Analyst.getName());
 
   /*
     Pedir promociones
   */
   cout << endl << "----------- Trabajo -----------" << endl;
-  PauCardoso.AskPromotion();
+  PauCardoso.askPromotion();
   checkIfPromotion(RodrigoTeran, Meta, FrontendButton);
   checkIfPromotion(PauCardoso, Meta, Analyst);
   
@@ -90,12 +121,12 @@ int main() {
     En un uso real, cada vez que alguien trabaje se manda a llamar
     estos métodos
   */
-  PauCardoso.Work();
-  PauCardoso.Work();
-  PauCardoso.Work();
+  PauCardoso.readDocumentation();
+  PauCardoso.code();
+  PauCardoso.code();
 
-  RodrigoTeran.Work();
-  RodrigoTeran.AskPromotion();
+  RodrigoTeran.code();
+  RodrigoTeran.askPromotion();
 
   checkIfPromotion(RodrigoTeran, Meta, FrontendButton);
   checkIfPromotion(PauCardoso, Meta, Analyst);
@@ -110,6 +141,5 @@ int main() {
   checkIfEndProject(PauCardoso, Analyst);
   checkIfEndProject(RodrigoTeran, FrontendButton);
   
-
   return 0;
 };

@@ -1,5 +1,14 @@
+/*
+* Rodrigo Terán Hernández
+* A01704108
+* Materia: Pensamiento computacional orientado a objetos
+* Profesor: Benjamin Valdés Aguirre
+*/
+
 #include <iostream>
 #include "employee.h"
+#ifndef COMPANY_H
+#define COMPANY_H
 
 using namespace std;
 
@@ -22,22 +31,29 @@ class Company {
     };
 
     // Getters
+    int getNumberEmployees();
     string getName();
     string getLocation();
-    int getNumberEmployees();
     Employee getCEO();
+
+    // Setters
+    void setNumberEmployees(int number);
+    void setName(string name);
+    void setLocation(string location);
+    void setCEO(Employee ceo);
 
     // Extra Methods
     void addEmployee();
     void isApplicantForPromotion(Employee employee);
 };
 
-string Company::getName() {
-  return Name;
-};
-
+// Getters
 int Company::getNumberEmployees() {
   return NumberEmployees;
+};
+
+string Company::getName() {
+  return Name;
 };
 
 string Company::getLocation() {
@@ -48,6 +64,24 @@ Employee Company::getCEO() {
   return CEO;
 };
 
+// Setters
+void Company::setNumberEmployees(int number) {
+  NumberEmployees = number;
+};
+
+void Company::setName(string name) {
+  Name = name;
+};
+
+void Company::setLocation(string location) {
+  Location = location;
+};
+
+void Company::setCEO(Employee ceo) {
+  CEO = ceo;
+};
+
+// Extra Methods
 void Company::addEmployee() {
   NumberEmployees++;
 };
@@ -59,3 +93,5 @@ void Company::isApplicantForPromotion(Employee employee) {
     cout << employee.getName() << " no puedes ser promovido(a)" << endl;
   };
 };
+
+#endif

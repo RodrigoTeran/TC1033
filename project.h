@@ -1,4 +1,13 @@
+/*
+* Rodrigo Terán Hernández
+* A01704108
+* Materia: Pensamiento computacional orientado a objetos
+* Profesor: Benjamin Valdés Aguirre
+*/
+
 #include <iostream>
+#ifndef PROJECT_H
+#define PROJECT_H
 
 using namespace std;
 
@@ -19,9 +28,11 @@ class Project {
     int getHours();
     
     // Setters
+    void setName(string name);
     void setNecessaryHours(string position);
 };
 
+// Getters
 string Project::getName() {
   return Name;
 };
@@ -30,8 +41,15 @@ int Project::getHours() {
   return NecessaryHours;
 };
 
+// Setters
+void Project::setName(string name) {
+  Name = name;
+};
+
 void Project::setNecessaryHours(string position) {
   if (position == "Product Manager") {
     NecessaryHours += 5;
   };
 };
+
+#endif

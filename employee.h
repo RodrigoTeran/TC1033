@@ -1,10 +1,19 @@
+/*
+* Rodrigo Terán Hernández
+* A01704108
+* Materia: Pensamiento computacional orientado a objetos
+* Profesor: Benjamin Valdés Aguirre
+*/
+
 #include <iostream>
 #include "project.h"
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 
 using namespace std;
 
 class Employee {
-  private:
+  protected:
     float Salary;
     string Name;
     int Age;
@@ -27,43 +36,38 @@ class Employee {
     };
 
     // Getters
-    string getPosition();
+    float getSalary();
     string getName();
     int getAge();
     int getYearsExperience();
+    string getPosition();
     int getWork();
-    bool getWantsPromotion();
     Project getCurrentProject();
+    bool getWantsPromotion();
 
     // Setters
+    void setSalary(float salary);
+    void setName(string name);
+    void setAge(int age);
+    void setYearsExperience(int years);
     void setPosition(string position);
+    void setWork(int work);
     void setCurrentProject(Project newProject);
-    void setMoreSalary();
+    void setWantsPromotion(bool promotion);
 
     // Extra Methods
-    void Work();
-    void AskPromotion();
-    void PresentYourself(string projectName);
+    void askPromotion();
+    void addMoreSalary();
+    virtual void presentYourself(string projectName);
 };
 
-string Employee::getPosition() {
-  return Position;
+// Getters
+float Employee::getSalary() {
+  return Salary;
 };
 
 string Employee::getName() {
   return Name;
-};
-
-void Employee::setCurrentProject(Project newProject) {
-  CurrentProject = newProject;
-};
-
-Project Employee::getCurrentProject() {
-  return CurrentProject;
-};
-
-void Employee::setMoreSalary() {
-  Salary += 10000.0;
 };
 
 int Employee::getAge() {
@@ -74,30 +78,67 @@ int Employee::getYearsExperience() {
   return YearsExperience;
 };
 
-bool Employee::getWantsPromotion() {
-  return WantsPromotion;
+string Employee::getPosition() {
+  return Position;
 };
 
 int Employee::getWork() {
   return HoursWorked;
 };
 
+Project Employee::getCurrentProject() {
+  return CurrentProject;
+};
+
+bool Employee::getWantsPromotion() {
+  return WantsPromotion;
+};
+
+// Setters
+void Employee::setSalary(float salary) {
+  Salary = salary;
+};
+
+void Employee::setName(string name) {
+  Name = name;
+};
+
+void Employee::setAge(int age) {
+  Age = age;
+};
+
+void Employee::setYearsExperience(int years) {
+  YearsExperience = years;
+};
+
 void Employee::setPosition(string position) {
   Position = position;
 };
 
-void Employee::Work() {
-  if (CurrentProject.getName() != "") {
-    HoursWorked += 10;
-    cout << Name << " esta trabajando..." << endl;
-  };
+void Employee::setWork(int work) {
+  HoursWorked = work;
 };
 
-void Employee::AskPromotion() {
+void Employee::setCurrentProject(Project newProject) {
+  CurrentProject = newProject;
+};
+
+void Employee::setWantsPromotion(bool promotion) {
+  WantsPromotion = promotion;
+};
+
+// Extra Methods
+void Employee::askPromotion() {
   WantsPromotion = true;
 };
 
-void Employee::PresentYourself(string projectName) {
+void Employee::addMoreSalary() {
+  Salary += 10000.0;
+};
+
+void Employee::presentYourself(string projectName) {
   cout << "Hola!, mi nombre es " << Name << " y soy " << Position << endl;
   cout << "Y hoy voy a estar trabajando en el proyecto de " << projectName << endl << endl;
 };
+
+#endif
