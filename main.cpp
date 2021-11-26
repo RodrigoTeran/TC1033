@@ -46,8 +46,10 @@ int main() {
   // Sistema de empleados de la compañía META (Facebook)
 
   // Crear Compañía
-  CEO MarkZuckerberg(1000000.0, "Mark Zuckerberg", 37, 17, "CEO", "Meta");
-  Company Meta(1200, "Meta", "Silicon Valley", MarkZuckerberg);
+  CEO MarkZuckerberg(100000.0, "Mark Zuckerberg", 37, 17, "CEO", "Meta");
+  
+  // Se inicializa con 0 empleados
+  Company Meta(0, "Meta", "Silicon Valley", MarkZuckerberg);
   
   /*
     A partir de aquí todo el programa podría correr en un bucle cada día en un uso real
@@ -72,7 +74,7 @@ int main() {
   RodrigoProject.setName("Arreglar boton de pagina de Instagram");
   RodrigoProject.setNecessaryHours(14);
   RodrigoTeran.setCurrentProject(RodrigoProject);
-  Meta.addEmployee();
+  Meta.addEmployee(RodrigoTeran);
 
   // --------------------- Paulina ---------------------
   string languagesPaulina[3] = {"R", "C++", "Python"};
@@ -88,7 +90,7 @@ int main() {
   PauCardosoProject.setName("Analisis de datos de WhatsApp");
   PauCardosoProject.setNecessaryHours(20);
   PauCardoso.setCurrentProject(PauCardosoProject);
-  Meta.addEmployee();
+  Meta.addEmployee(PauCardoso);
 
   /*
     Trabajo
@@ -141,6 +143,17 @@ int main() {
   cout << endl << "----------- Al final del dia -----------" << endl;
   checkIfEndProject(RodrigoTeran, RodrigoTeran.getCurrentProject());
   checkIfEndProject(PauCardoso, PauCardoso.getCurrentProject());
+
+
+  // Todos los empleados
+  cout << endl << "Empleados:" << endl;
+  Employee *pointerEmployees;
+  pointerEmployees = Meta.getEmployees();
+  Employee ArrayEmployees[2] = *pointerEmployees;
   
+  int numberEmployees = Meta.getNumberEmployees();
+  for (int i = 0; i < numberEmployees; i++) {
+    cout << "Empleado " << i + 1 << ": " << ArrayEmployees[i + 1].getName() << endl;  
+  };
   return 0;
 };

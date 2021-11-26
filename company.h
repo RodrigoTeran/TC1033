@@ -18,6 +18,7 @@ class Company {
     string Name;
     string Location;
     Employee CEO;
+    Employee EmployeesCompany[2];
 
   public:
     Company() : NumberEmployees(0), Name(""), Location("") {};
@@ -35,15 +36,18 @@ class Company {
     string getName();
     string getLocation();
     Employee getCEO();
+    Employee* getEmployees();
+
 
     // Setters
     void setNumberEmployees(int number);
     void setName(string name);
     void setLocation(string location);
     void setCEO(Employee ceo);
+    // No setter for EmployeesCompany[]
 
     // Extra Methods
-    void addEmployee();
+    void addEmployee(Employee employee);
     void isApplicantForPromotion(Employee employee);
 };
 
@@ -64,6 +68,10 @@ Employee Company::getCEO() {
   return CEO;
 };
 
+Employee* Company::getEmployees() {
+  return EmployeesCompany;
+};
+
 // Setters
 void Company::setNumberEmployees(int number) {
   NumberEmployees = number;
@@ -82,7 +90,8 @@ void Company::setCEO(Employee ceo) {
 };
 
 // Extra Methods
-void Company::addEmployee() {
+void Company::addEmployee(Employee employee) {
+  EmployeesCompany[NumberEmployees] = employee;
   NumberEmployees++;
 };
 
