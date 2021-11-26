@@ -52,6 +52,9 @@ para ganarse esa promoción.
 Y al final del día, se hace un cierre para checar qué proyectos
 ya se han finalizado.
 
+## Consideraciones:
+* No se puede crear un proyecto sin haber creado un empleado
+
 ## Correr programa
 
 ```
