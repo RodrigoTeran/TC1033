@@ -147,14 +147,10 @@ int main() {
 
   // Todos los empleados
   cout << endl << "Empleados:" << endl;
-  Employee *pointerEmployees;
-  pointerEmployees = Meta.getEmployees();
-  Employee ArrayEmployees[2];
-  ArrayEmployees[0] = *pointerEmployees;
   
   int numberEmployees = Meta.getNumberEmployees();
-  for (int i = 0; i <= numberEmployees; i+=2) {
-    cout << "Empleado: " << ArrayEmployees[i].getName() << endl;
-  };
+  cout << "Numero de empleados: " << numberEmployees << endl;
+  cout << "Empleado 1: " << RodrigoTeran.getName() << endl;
+  cout << "Empleado 2: " << PauCardoso.getName() << endl;
   return 0;
 };
