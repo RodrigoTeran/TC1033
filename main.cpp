@@ -149,11 +149,12 @@ int main() {
   cout << endl << "Empleados:" << endl;
   Employee *pointerEmployees;
   pointerEmployees = Meta.getEmployees();
-  Employee ArrayEmployees[2] = *pointerEmployees;
+  Employee ArrayEmployees[2];
+  ArrayEmployees[0] = *pointerEmployees;
   
   int numberEmployees = Meta.getNumberEmployees();
-  for (int i = 0; i < numberEmployees; i++) {
-    cout << "Empleado " << i + 1 << ": " << ArrayEmployees[i + 1].getName() << endl;  
+  for (int i = 0; i <= numberEmployees; i+=2) {
+    cout << "Empleado: " << ArrayEmployees[i].getName() << endl;
   };
   return 0;
 };
